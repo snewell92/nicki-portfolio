@@ -15,7 +15,7 @@ import type { ContentEntryMap } from "astro:content";
 const pf = theme.fonts.font_family.primary;
 const sf = theme.fonts.font_family.secondary;
 
-let fontPrimary, fontSecondary;
+let fontPrimary: string, fontSecondary: string;
 if (theme.fonts.font_family.primary) {
   fontPrimary = theme.fonts.font_family.primary
     .replace(/\+/g, " ")
@@ -107,11 +107,6 @@ const _author = author
   : page?.meta_author
     ? page.meta_author
     : config.metadata.meta_author;
-const _keywords = keywords
-  ? keywords
-  : page?.meta_keywords
-    ? page.meta_keywords
-    : config.metadata.meta_keywords;
 const _canonical_url = canonical_url
   ? canonical_url
   : page?.canonical_url
