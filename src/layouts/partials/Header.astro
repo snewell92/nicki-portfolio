@@ -1,0 +1,19 @@
+---
+import Logo from "@/components/core/Logo.astro";
+
+export interface ChildNavigationLink {
+  name: string;
+  url: string;
+}
+
+export interface NavigationLink {
+  name: string;
+  url: string;
+  hasChildren?: boolean;
+  children?: ChildNavigationLink[];
+}
+---
+
+<header class="flex flex-row">
+    <Logo />
+</nav>

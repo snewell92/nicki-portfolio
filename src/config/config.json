@@ -1,0 +1,29 @@
+{
+  "site": {
+    "title": "Nicki Newell Art",
+    "base_url": "https://nicki.thenewells.us",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.ico",
+    "logo": "/images/nicki-logo.webp",
+    "logo_width": "800",
+    "logo_height": "400",
+    "logo_text": "Nicki's Portfolio"
+  },
+  "metadata": {
+    "meta_author": "snewell92",
+    "meta_image": "/images/logo.png",
+    "meta_description": "Nicki Newell's Portfolio Site",
+    "meta_keywords": [
+      "nicki",
+      "art",
+      "portfolio",
+      "nickinewellart",
+      "watercolour",
+      "watercolor",
+      "illustration",
+      "commissions"
+    ],
+    "meta_application_name": "Nicki Newell Art"
+  }
+}
