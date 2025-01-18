@@ -2,6 +2,8 @@
 import Base from "@/layouts/Base.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import { parse } from "marked";
+import insane from "insane";
 
 export async function getStaticPaths() {
   const galleryPictures = await getCollection("showcase");
@@ -22,6 +24,8 @@ if (!pic) {
 
 const { data } = pic;
 const ratio = data.width / data.height;
+const storyHTML = data.story ? insane(parse(data.story), ["p", "strong", "ol", "ul", "i", "u", "em", "a", "code", "details", "summary"]): "";
+
 ---
 <Base title={data.title} author="Nicki Newell" image={data.href.src}>
     <h2 class="text-center text-lg text-purple-200 pt-4 pb-8 underline">{data.title}</h2>
@@ -33,8 +37,7 @@ const ratio = data.width / data.height;
       src={data.href}
       alt={data.title}
     />
-  <div class="mt-8 px-16 text-left mb-[20rem]">
-    <p>{data.story}</p>
+  <div class="mt-8 px-16 text-left mb-[20rem]" set:html={storyHTML}>
   </div>
 </Base>
 

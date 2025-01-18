@@ -29,22 +29,7 @@ export default defineConfig({
   image: {
     service: sharpImageService(),
   },
-  integrations: [
-    react(),
-    sitemap(),
-    tailwind(),
-    AutoImport({
-      // import react components to use in mdx
-      imports: [
-        "@/components/react/FeatherIcon.tsx",
-        "@/components/CounterComponent.astro",
-        "@/components/core/Section.astro",
-        "@/components/react/Changelog.tsx",
-        "@/components/Badge.astro",
-      ],
-    }),
-    mdx(),
-  ],
+  integrations: [react(), sitemap(), tailwind(), mdx()],
   markdown: {
     shikiConfig: {
       theme: "one-dark-pro",
