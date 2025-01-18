@@ -4,7 +4,7 @@
     "base_url": "https://nicki.thenewells.us",
     "base_path": "/",
     "trailing_slash": false,
-    "favicon": "/images/favicon.ico",
+    "favicon": "/images/favicon.svg",
     "logo": "/images/nicki-logo.webp",
     "logo_width": "800",
     "logo_height": "400",

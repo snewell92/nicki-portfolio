@@ -6,6 +6,7 @@ const showcase = defineCollection({
   schema: ({ image }) =>
     z.object({
       href: image(),
+      /** Will sort images in the DOM order, may be ordered differently by the grid */
       order: z.number(),
       title: z.string(),
       story: z.string().optional(),

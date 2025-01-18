@@ -8,58 +8,18 @@ const galleryPictures = await getCollection("showcase");
 
 <Base>
   <section id="showcase_grid" class="lg:mb-10 lg:px-16 px-4 grid gap-5 grid-cols-5 gris-flow-rows">
-      {galleryPictures.sort((a, b) => a.data.order - b.data.order).map(({ data }) =>
-          <Image
-            class={`animate-fade-in row-span-${data.rowspan} col-span-${data.colspan} showcase cursor-pointer outline-blue-500 outline-2 hover:outline`}
-            data-width={data.width}
-            data-height={data.height}
+      {galleryPictures.sort((a, b) => a.data.order - b.data.order).map(({ data, id }) =>
+          <a class={`animate-fade-in row-span-1 col-span-5 sm:col-span-2 md:row-span-${data.rowspan} md:col-span-${data.colspan}`} href={`piece/${id}`}>
+            <Image
+            class={`cursor-pointer outline-blue-500 outline-2 hover:outline`}
+            width={data.width}
+            height={data.height}
+            data-story={data.story || ""}
             src={data.href}
             alt={data.title}
             role="button"
-            aria-roledescription="An image that can be clicked to focus in on and bring up and over the other images, press escape to dismiss"
-          />
+            aria-roledescription="An image that can be clicked to navigate to a page for only this image."
+          /></a>
       )}
   </section>
-  <div id="placeholderContainer" class="fixed top-0 left-0 hidden w-screen h-screen">
-    <img id="placeholder" class="aspect-auto mx-auto mt-10" />
-  </div>
 </Base>
-
-<script>
-
-declare const showcase_grid: HTMLElement;
-declare const placeholderContainer: HTMLDivElement;
-declare const placeholder: HTMLImageElement;
-
-function isImgTag(targetEl: any): targetEl is HTMLImageElement {
-  return !!targetEl && typeof targetEl.tagName === "string" && targetEl.tagName === "IMG";
-}
-
-let open = false;
-
-showcase_grid.addEventListener('click', (evt) => {
-  if (open || !isImgTag(evt.target)) {
-    return;
-  }
-
-  open = true;
-  showcase_grid.classList.add('blur-lg')
-  placeholder.src = evt.target.src;
-  placeholder.style.width = "35vw";
-
-  placeholderContainer.classList.remove("hidden");
-});
-
-document.addEventListener('keydown', (evt) => {
-  if (!open) {
-    return;
-  }
-
-  if (evt.key === "Escape") {
-    open = false;
-    showcase_grid.classList.remove('blur-lg');
-    placeholderContainer.classList.add("hidden");
-  }
-})
-
-</script>

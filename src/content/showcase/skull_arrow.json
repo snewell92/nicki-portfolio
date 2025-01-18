@@ -1,9 +1,10 @@
 {
   "title": "Do Us Part",
+  "story": "Do Us Part Illustrated by Nicki Newell 2024",
   "href": "src/images/skull_arrow.png",
   "width": 1748,
   "height": 2480,
-  "rowspan": 2,
+  "rowspan": 1,
   "colspan": 1,
   "order": 1
 }

@@ -1,0 +1,52 @@
+---
+import Base from "@/layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const galleryPictures = await getCollection("showcase");
+  return galleryPictures.map(gp => ({
+    params: {
+      piece: gp.id
+    }
+  }));
+}
+
+const galleryPictures = await getCollection("showcase");
+const { piece } = Astro.params;
+const pic = galleryPictures.find(gp => gp.id === piece);
+if (!pic) {
+  // Astro routing (via getStaticPaths) ensures we match what is in the collection
+  throw new Error("Impossible");
+}
+
+const { data } = pic;
+const ratio = data.width / data.height;
+---
+<Base title={data.title} author="Nicki Newell" image={data.href.src}>
+    <h2 class="text-center text-lg text-purple-200 pt-4 pb-8 underline">{data.title}</h2>
+    <Image
+      id="THE_PIECE"
+      class="mx-auto animate-fade-in hidden"
+      width={data.width}
+      height={data.height}
+      src={data.href}
+      alt={data.title}
+    />
+  <div class="mt-8 px-16 text-left mb-[20rem]">
+    <p>{data.story}</p>
+  </div>
+</Base>
+
+<script define:vars={{ ratio }}>
+/** Resizes the image based on the ratio and screen height */
+function resizeImage() {
+  const targetHeight = window.screen.height * 0.9;
+  const targetWidth = ratio * targetHeight;
+
+  THE_PIECE.style.width = targetWidth + "px";
+}
+
+resizeImage();
+THE_PIECE.classList.remove("hidden");
+</script>

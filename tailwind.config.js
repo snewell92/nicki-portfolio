@@ -14,8 +14,8 @@ module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   safelist: [
     { pattern: /^col-/ },
-    { pattern: /^row-span-[1-5]/ },
-    { pattern: /^col-span-[1-5]/ },
+    { pattern: /row-span-[1-12]/, variants: ["sm", "md", "lg"] },
+    { pattern: /col-span-[1-12]/, variants: ["sm", "md", "lg"] },
     ...theme_config.colors.flatMap((color) => [
       { pattern: new RegExp(`bg-${color}`) },
     ]),

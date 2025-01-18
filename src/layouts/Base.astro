@@ -113,7 +113,6 @@ const _noindex =
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- favicon -->
     <link rel="shortcut icon" href={config.site.favicon} />
     <!-- theme meta -->
     <meta
@@ -252,10 +251,10 @@ const _noindex =
       document.addEventListener("astro:after-swap", setTheme);
     </script>
   </head>
-  <body class="transition-colors duration-500">
+  <body class="bg-[#263E3F] bg-gradient-to-b from-[#120C12] to-[#263E3F]">
     <TwSizeIndicator />
     <Header />
-    <main id="main-content relative">
+    <main id="main-content relative transition-colors duration-500">
       <slot />
     </main>
   </body>
